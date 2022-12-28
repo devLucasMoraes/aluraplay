@@ -20,11 +20,15 @@ const lista = document.querySelector('[data-lista]');
 }
 
 async function listaVideos() {
-    const listaApi = await conectaApi.listaVideosJson();
-    
-    listaApi.forEach(element => {
-        lista.appendChild(constroiCard(element.titulo, element.descricao, element.url, element.imagem))
-    });
+    try {
+        const listaApi = await conectaApi.listaVideosJson();
+        listaApi.forEach(element => {
+            lista.appendChild(constroiCard(element.titulo, element.descricao, element.url, element.imagem))
+        });
+    } catch {
+        lista.innerHTML = `<h2 class="mensagem__titulo">Não foi possivel carregar a lista de vídeos </h2>`
+    }
+
 }
 
 listaVideos();
