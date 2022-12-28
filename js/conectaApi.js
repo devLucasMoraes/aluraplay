@@ -1,4 +1,4 @@
-async function listaVideos() {
+async function listaVideosJson() {
     const conexao = await fetch("http://localhost:3000/videos");
     const conexaoJson = await conexao.json();
     console.log(conexaoJson);
@@ -7,5 +7,5 @@ async function listaVideos() {
 
 
 export const conectaApi = {
-    listaVideos
+    listaVideosJson
 }
